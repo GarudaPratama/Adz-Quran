@@ -2,25 +2,18 @@
 
 @theme {
   --color-gold: #b2944d;
-  --color-gold-soft: #dfcf9d;
   --color-charcoal: #1a1a1a;
   --color-ivory: #fdfcf8;
-  
   --font-serif: "Cormorant Garamond", serif;
   --font-arabic: "Amiri", serif;
 }
 
 body {
-  @apply bg-ivory text-charcoal font-serif transition-colors duration-300;
+  @apply bg-ivory text-charcoal font-serif;
 }
 
-/* Custom Scrollbar Premium */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  @apply bg-ivory;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-gold/30 rounded-full hover:bg-gold/50;
+@utility no-scrollbar {
+  ::-webkit-scrollbar { display: none; }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
