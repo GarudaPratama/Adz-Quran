@@ -1,15 +1,29 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function Navbar() {
+  const location = useLocation()
+
   return (
-    <nav className="bg-white/80 backdrop-blur-md border-b border-gold/10 p-5 sticky top-0 z-50">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-xl font-bold tracking-widest uppercase text-charcoal">Adz<span className="text-gold">-</span>Quran</Link>
-        <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest">
-          <Link to="/" className="hover:text-gold">Surah</Link>
-          <Link to="/juz" className="hover:text-gold">Juz</Link>
-          <Link to="/bookmarks" className="text-gold">❤ Bookmarks</Link>
-        </div>
+    <nav className="p-6 flex justify-between items-center max-w-7xl mx-auto">
+      <div className="flex items-center gap-4">
+        {/* Tombol Back muncul jika bukan di HomePage */}
+        {location.pathname !== '/' && (
+          <Link 
+            to="/" 
+            className="group flex items-center gap-2 bg-white border border-gold/10 px-4 py-2 rounded-2xl shadow-sm hover:border-gold transition-all"
+          >
+            <span className="text-gold group-hover:-translate-x-1 transition-transform">←</span>
+            <span className="text-[10px] font-black text-charcoal uppercase tracking-widest">Beranda</span>
+          </Link>
+        )}
+        
+        <Link to="/" className="text-xl font-bold text-charcoal tracking-tighter">
+          ADZ<span className="text-gold">QURAN</span>
+        </Link>
+      </div>
+
+      <div className="flex gap-6">
+        <Link to="/bookmarks" className="text-[10px] font-bold text-slate-400 uppercase tracking-widest hover:text-gold transition-all">Bookmarks</Link>
       </div>
     </nav>
   )

@@ -8,6 +8,7 @@ import DetailPage from './pages/DetailPage'
 import JuzPage from './pages/JuzPage'
 import JuzDetailPage from './pages/JuzDetailPage'
 import BookmarkPage from './pages/BookmarkPage'
+import TafsirPage from './pages/TafsirPage'
 
 export default function App() {
   const [activeAudio, setActiveAudio] = useState(null);
@@ -53,6 +54,7 @@ export default function App() {
             path="/surat/:nomor" 
             element={<DetailPage onPlay={setActiveAudio} toggleB={toggleBookmark} bookmarks={bookmarks} />} 
           />
+          <Route path="/tafsir/:nomor" element={<TafsirPage />} />
         </Routes>
       </main>
       <AudioPlayer active={activeAudio} onClose={() => setActiveAudio(null)} />
