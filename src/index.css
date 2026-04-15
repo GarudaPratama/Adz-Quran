@@ -1,15 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warna kustom untuk tema Islami */
-  --color-primary: #064e3b; /* Emerald gelap */
-  --color-secondary: #10b981; /* Emerald terang */
+  --color-gold: #b2944d;
+  --color-gold-soft: #dfcf9d;
+  --color-charcoal: #1a1a1a;
+  --color-ivory: #fdfcf8;
   
-  /* Font Arabic (Opsional: pastikan panggil di index.html atau via Google Fonts) */
+  --font-serif: "Cormorant Garamond", serif;
   --font-arabic: "Amiri", serif;
 }
 
-/* Reset default margin/padding */
 body {
-  @apply bg-slate-50 text-slate-900;
+  @apply bg-ivory text-charcoal font-serif transition-colors duration-300;
+}
+
+/* Custom Scrollbar Premium */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-ivory;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gold/30 rounded-full hover:bg-gold/50;
 }
