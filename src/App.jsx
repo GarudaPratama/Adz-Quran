@@ -13,11 +13,13 @@ export default function App() {
   const [activeAudio, setActiveAudio] = useState(null);
   const [bookmarks, setBookmarks] = useState({ surahs: [], ayats: [] });
 
+  // Load Bookmarks dari LocalStorage
   useEffect(() => {
     const saved = localStorage.getItem('adz_bookmarks');
     if (saved) setBookmarks(JSON.parse(saved));
   }, []);
 
+  // Fungsi Global Bookmark (Handle Surah & Ayat)
   const toggleBookmark = (item, type) => {
     let newB = { ...bookmarks };
     if (type === 'surah') {
@@ -32,15 +34,25 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-ivory selection:bg-gold/20 font-serif">
       <Navbar />
       <main className="pb-32">
+        
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/surat/:nomor" element={<DetailPage onPlay={setActiveAudio} toggleB={toggleBookmark} bookmarks={bookmarks} />} />
           <Route path="/juz" element={<JuzPage />} />
-          <Route path="/juz/:nomor" element={<JuzDetailPage onPlay={setActiveAudio} toggleB={toggleBookmark} bookmarks={bookmarks} />} />
-          <Route path="/bookmarks" element={<BookmarkPage bookmarks={bookmarks} toggleB={toggleBookmark} />} />
+          <Route 
+            path="/juz/:nomor" 
+            element={<JuzDetailPage onPlay={setActiveAudio} toggleB={toggleBookmark} bookmarks={bookmarks} />} 
+          />
+          <Route 
+            path="/bookmarks" 
+            element={<BookmarkPage bookmarks={bookmarks} toggleB={toggleBookmark} />} 
+          />
+          <Route 
+            path="/surat/:nomor" 
+            element={<DetailPage onPlay={setActiveAudio} toggleB={toggleBookmark} bookmarks={bookmarks} />} 
+          />
         </Routes>
       </main>
       <AudioPlayer active={activeAudio} onClose={() => setActiveAudio(null)} />
